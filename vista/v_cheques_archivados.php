@@ -5,6 +5,16 @@
     <!-- Title Page-->
     <title>Cheques</title>
     <?php include 'complementos/head_pag.php';?>  
+
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script>
+        $( document ).ready(function() {
+        $('#mostrarForm').modal('toggle')
+    });
+    </script>
 </head>
 
 <body class="animsition">
@@ -48,6 +58,7 @@
                                                 <th>Banco </th>
                                                 <th>Fecha de giro</th>
                                                 <th>Fecha a cobrar</th>
+                                                <th>Archivo guardado</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -62,10 +73,11 @@
                                                 echo "<td>".$registro["banco"]. "</td>";
                                                 echo "<td>".date('d/m/Y', strtotime($registro["fecha_giro"]))."</td>";
                                                 echo "<td>".date('d/m/Y', strtotime($registro["fecha_cobrar"]))."</td>";
+                                                echo "<td>".$registro["archivo"]. "</td>";
                                                 echo "<td>"?>
 
                                                 <div class="table-data-feature">
-                                                <button type="button" class="btn btn-warning item" data-toggle="modal" data-target="#archivoCheque" title="Visualizar" data-id="<?php echo $registro['id_cheque']?>" ><i class='zmdi zmdi-eye' data-archive="<?php echo $registro['nombre_empresa']?>" ></i> </button>
+                                                <button type="button" class="btn btn-warning item" data-toggle="modal" data-target="#archivoCheque" title="Visualizar" id="#archivoCheque" data-archivo="<?php echo $registro['archivo']?>" data-id="<?php echo $registro['id_cheque']?>" ><i class='zmdi zmdi-eye'></i> </button>
                                                 </div>
 
                                                 </div>
@@ -91,6 +103,7 @@
         </div>
     </div>
 
+<script src="../vista/chk_archi1.js"></script>
 <script>
     $(document).ready(function() {
     $('#mytable').DataTable( {
@@ -104,7 +117,15 @@
               "previous": "Anterior",
               "next": "Siguiente"
             }
-        }
+        },
+        "columnDefs": [
+                {
+                "targets": [ 7 ],
+                "visible": false,
+                "searchable": false
+                }
+            ],
+        "order": []
     } );
     } );
 </script>
@@ -145,9 +166,8 @@
 <script src="../assets/js/buttons.html5.min.js"></script>
 <script src="../assets/js/buttons.print.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../assets/css/buttons.dataTables.min.css">
-
-<script src="../vista/archi1.js"></script>
 </style>
+
 </body>
 </html>
 <!-- end document-->

@@ -120,7 +120,7 @@
     </div>
 <?php include 'complementos/scripts.php';?>
 
-<script src="../vista/cartaFianza.js"></script>
+<script src="../vista/fianzas.js"></script>
 
 <script>
     $(document).ready(function() {

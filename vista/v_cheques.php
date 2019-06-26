@@ -70,6 +70,7 @@
                                                 <th>Banco </th>
                                                 <th>Fecha de giro</th>
                                                 <th>Fecha a cobrar</th>
+                                                <th>Archivo guardado</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -84,6 +85,7 @@
                                                 echo "<td>".$registro["banco"]. "</td>";
                                                 echo "<td>".date('d/m/Y', strtotime($registro["fecha_giro"]))."</td>";
                                                 echo "<td>".date('d/m/Y', strtotime($registro["fecha_cobrar"]))."</td>";
+                                                echo "<td>".$registro["archivo"]. "</td>";
                                                 echo "<td>"?>
 
                                                 <div class="table-data-feature">
@@ -98,7 +100,7 @@
 									            } else {
 									            }
 									            ?>
-                                                <button type="button" class="btn btn-warning item" data-toggle="modal" data-target="#archivo_carta" title="Visualizar" id="#archivo_carta" data-archivo="<?php echo $registro['archivo']?>" data-id="<?php echo $registro['id_cheque']?>" ><i class='zmdi zmdi-eye'></i> </button>
+                                                <button type="button" class="btn btn-warning item" data-toggle="modal" data-target="#archivoCheque" title="Visualizar" id="#archivoCheque" data-archivo="<?php echo $registro['archivo']?>" data-id="<?php echo $registro['id_cheque']?>" ><i class='zmdi zmdi-eye'></i> </button>
                                                 </div>
                                                 </td>
                                                 <?php
@@ -128,7 +130,7 @@
         </div>
     </div>
 
-<script src="../vista/chk.js"></script>
+<script src="../vista/chk1.js"></script>
 <script>
     $(document).ready(function() {
     $('#mytable').DataTable( {
@@ -142,7 +144,15 @@
               "previous": "Anterior",
               "next": "Siguiente"
             }
-        }
+        },
+        "columnDefs": [
+                {
+                "targets": [ 7 ],
+                "visible": false,
+                "searchable": false
+                }
+            ],
+        "order": []
     } );
     } );
 </script>

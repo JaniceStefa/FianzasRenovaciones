@@ -4,8 +4,8 @@
 			<div class="modal-header">
 				<h5 class="modal-title" id="smallmodalLabel">Carta fianza escaneada </h5>
         		<button type="button" class="btn-success" onClick="newSrc();"><img src="../images/icon/2.png"></button>
-        		<button type="button" class="btn-success" onClick="cfanterior1();"><img src="../images/icon/1.png"></button>
-        		<button type="button" class="btn-success" onClick="cfanterior2();"><img src="../images/icon/0.png"></button>
+        		<!--<button type="button" class="btn-success" onClick="cfanterior1();"><img src="../images/icon/1.png"></button>
+        		<button type="button" class="btn-success" onClick="cfanterior2();"><img src="../images/icon/0.png"></button>-->
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close" name="close" >
 			    <span aria-hidden="true">&times;</span>
 			  </button>
