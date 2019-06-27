@@ -23,7 +23,8 @@
 		  var emision = button.data('emision') // Extraer la información de atributos de datos
 		  var vencimiento = button.data('vencimiento') // Extraer la información de atributos de datos
 		  var vigencia = button.data('vigencia') // Extraer la información de atributos de datos
-		  var oficina = '89'
+		  var prioridad = button.data('prioridad') // Extraer la información de atributos de datos
+		  var oficina = button.data('oficina')
 		  //var oficina = button.data('lstoficina') // Extraer la información de atributos de datos
 		  
 		  var modal = $(this)
@@ -39,6 +40,7 @@
 		  modal.find('.modal-body #txtempresa').val(empresa)
 		  modal.find('.modal-body #txtmonto').val(total)
 		  modal.find('.modal-body #txtvigencia').val(vigencia)
+		  modal.find('.modal-body #txtprioridad').val(prioridad)
 		  
 		  $('.alert').hide();//Oculto alert
 		})

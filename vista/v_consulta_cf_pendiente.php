@@ -65,6 +65,7 @@
                                                 <th>Fecha Emisión</th>
                                                 <th>Vigencia</th>
                                                 <th>Fecha Vencimiento</th>
+                                                <th>PRIORIDAD</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -80,19 +81,20 @@
                                                 echo "<td>".date('d/m/Y', strtotime($registro["fecha_emision"]))."</td>";
                                                 echo "<td>".$registro["vigencia"]. " días </td>";
                                                 echo "<td>".date('d/m/Y', strtotime($registro["fecha_venc"])). "</td>";
+                                                echo "<td>".$registro["prioridad"]. " </td>";
                                                 echo "<td>"?>
 
                                                 <div class="table-data-feature">
                                                 <?php
                                                 if (isset($_SESSION["usuario"])) {
                                                     if ($_SESSION["usuario"]["privilegio"] == 1) {?>
-                                                <button type="button" id="modif" class="btn btn-info item" data-toggle="modal" data-target="#dataUpdate" title="Modificar" data-id="<?php echo $registro['id_cartafianza']?>" data-empresa="<?php echo $registro['nombre_empresa']?>" data-oficina="<?php echo $registro['id_oficina']?>" data-codigo="<?php echo $registro['cod_carta_fianza']?>" data-tipo="<?php echo $registro['id_tipof']?>" data-entidad="<?php echo $registro['id_entidad']?>" data-total="<?php echo $registro['total_fianza']?>" data-emision="<?php echo $registro['fecha_emision']?>" data-vigencia="<?php echo $registro['vigencia']?>" data-vencimiento="<?php echo $registro['fecha_venc']?>" data-archivo="<?php echo $registro['archivo']?>"><i class='zmdi zmdi-edit'></i> </button>
+                                                <button type="button" id="modif" class="btn btn-info item" data-toggle="modal" data-target="#dataUpdate" title="Modificar" data-id="<?php echo $registro['id_cartafianza']?>" data-empresa="<?php echo $registro['nombre_empresa']?>" data-oficina="<?php echo $registro['id_oficina']?>" data-codigo="<?php echo $registro['cod_carta_fianza']?>" data-tipo="<?php echo $registro['id_tipof']?>" data-entidad="<?php echo $registro['id_entidad']?>" data-total="<?php echo $registro['total_fianza']?>" data-emision="<?php echo $registro['fecha_emision']?>" data-vigencia="<?php echo $registro['vigencia']?>"  data-prioridad="<?php echo $registro['prioridad']?>"  data-vencimiento="<?php echo $registro['fecha_venc']?>" data-archivo="<?php echo $registro['archivo']?>"><i class='zmdi zmdi-edit'></i> </button>
                                                 <button type="button" class="btn btn-success item" data-toggle="modal" data-target="#dataDelete" title="Archivar" data-id="<?php echo $registro['id_cartafianza']?>"  ><i class='zmdi zmdi-archive'></i> </button>
                                                 <?php }
                                                 } else {
                                                 }
                                                 ?>
-                                                <button type="button" class="btn btn-warning item" data-toggle="modal" data-target="#archivoCarta" title="Visualizar"  data-id="<?php echo $registro['id_cartafianza']?>" data-data-archivo="<?php echo $registro['archivo']?>"> <i class='zmdi zmdi-eye'></i> </button>
+                                                <button type="button" class="btn btn-warning item" data-toggle="modal" data-target="#archivoCarta" title="Visualizar"  data-id="<?php echo $registro['id_cartafianza']?>" data-archivo="<?php echo $registro['archivo']?>"> <i class='zmdi zmdi-eye'></i> </button>
                                                 </div>
                                                 </td>
                                                 <?php
@@ -136,6 +138,13 @@
               "next": "Siguiente"
             }
         },
+        "columnDefs": [
+                {
+                "targets": [ 8 ],
+                "visible": false,
+                "searchable": false
+                }
+            ],
         "order": []
     } );
     } );

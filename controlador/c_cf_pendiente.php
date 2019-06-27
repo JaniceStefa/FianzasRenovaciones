@@ -71,11 +71,13 @@
 		private $modelo1;
 		private $modelo2;
 		private $modelo3;
+		private $modelo4;
 		public function Admi(){
 			require_once("../modelo/m_cartafianza.php");
 			$this->modelo1=new M_CartaFianza();
 			$this->modelo2=new M_CartaFianza();
 			$this->modelo3=new M_CartaFianza();
+			$this->modelo4=new M_CartaFianza();
 			$this->modelo=new M_CartaFianza();
 			require_once("../vista/v_consulta_cf_pendiente.php");
 		}
@@ -114,10 +116,11 @@
 			$tipofianza = $_POST['lsttipo'];
 			$totalfianza = $_POST['txtmonto'];
 			$vigencia = $_POST['txtvigencia'];
+			$prioridad = $_POST['txtprioridad'];
 			$id_cartafianza = $_POST['id'];
 			unset($_POST['update']);
-            $this->modelo->Update_CF($codigo, $fechaemision, $fechavenc, $idempresa, $identidad, $idoficina, $tipofianza, $totalfianza, $vigencia, $id_cartafianza, $dest_path);
-            echo  '<script> window.location ="../controlador/c_cf_pendiente.php" </script>';
+            $this->modelo->Update_CF($codigo, $fechaemision, $fechavenc, $idempresa, $identidad, $idoficina, $tipofianza, $totalfianza, $vigencia, $id_cartafianza, $dest_path, $prioridad);
+            echo  '<script> window.location ="../controlador/c_cf_pendiente.php"</script>';
 		}
 
 
@@ -127,7 +130,7 @@
 			$id=$_POST['id'];
 			$this->modelo->Eliminar_CF($id);
 
-			echo  '<script> window.location ="../controlador/c_cf_pendiente.php" </script>';
+			echo  '<script> window.location ="../controlador/c_cf_pendiente.php"</script>';
 		}
 
 	}  

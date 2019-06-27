@@ -15,8 +15,8 @@
 			$this->db->query($sql);
 		}
 		//Modificar Datos del Presupuesto
-		public function Update_CF($cod_carta_fianza, $fecha_emision, $fecha_venc, $id_empresa, $id_entidad, $id_oficina, $id_tipo_fianza, $total_fianza, $vigencia, $id_cartafianza, $archivo){
-			$sql="CALL FIANZA_U('".$id_cartafianza."','".$cod_carta_fianza."','".$fecha_emision."','".$fecha_venc."','".$id_empresa."','".$id_entidad."','".$id_oficina."','".$id_tipo_fianza."','".$total_fianza."','".$vigencia ."','".$archivo."')";
+		public function Update_CF($cod_carta_fianza, $fecha_emision, $fecha_venc, $id_empresa, $id_entidad, $id_oficina, $id_tipo_fianza, $total_fianza, $vigencia, $id_cartafianza, $archivo, $prioridad){
+			$sql="CALL FIANZA_U('".$id_cartafianza."','".$cod_carta_fianza."','".$fecha_emision."','".$fecha_venc."','".$id_empresa."','".$id_entidad."','".$id_oficina."','".$id_tipo_fianza."','".$total_fianza."','".$vigencia ."','".$archivo."','".$prioridad ."')";
 			$this->db->query($sql);
 		}
 		//Mostrar listado de Presupuesto
@@ -41,6 +41,15 @@
 		public function Consultar_CF($id_cartafianza){
 
 			$sql=$this->db->query("CALL CONSULTA_CARTA_FIANZA('".$id_cartafianza."')");
+			while($filas=$sql->fetch(PDO::FETCH_ASSOC)){
+				$this->elemento[]=$filas;
+			}
+			return $this->elemento;
+		}
+
+		public function Consultar_Archivos($id_cartafianza){
+
+			$sql=$this->db->query("CALL CONSULTA_SCAN('".$id_cartafianza."')");
 			while($filas=$sql->fetch(PDO::FETCH_ASSOC)){
 				$this->elemento[]=$filas;
 			}

@@ -51,6 +51,7 @@
                   </div>
                   <div class="col-12 col-md-9">
                       <input type="number" id="txtvigencia" name="txtvigencia" placeholder="" class="form-control" require>
+                      <input type="hidden" id="txtprioridad" name="txtprioridad" placeholder="" class="form-control" require>
                   </div>
               </div>
           </div>             

@@ -1,42 +1,38 @@
-<div  id="archivoCarta" style="display:none" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div  id="archivoCarta" style="display:none" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" onClick="originSrc();">
 	<div class="modal-dialog" role="document" style="max-width: 70%">
 		<div class="modal-content" style="height: 90%">
 			<div class="modal-header">
-				<h5 class="modal-title" id="smallmodalLabel">Carta fianza escaneada </h5>
-        		<button type="button" class="btn-success" onClick="newSrc();"><img src="../images/icon/2.png"></button>
-        		<!--<button type="button" class="btn-success" onClick="cfanterior1();"><img src="../images/icon/1.png"></button>
-        		<button type="button" class="btn-success" onClick="cfanterior2();"><img src="../images/icon/0.png"></button>-->
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close" name="close" >
-			    <span aria-hidden="true">&times;</span>
+				<h5 class="modal-title" id="smallmodalLabel">Carta fianza escaneada:  </h5>
+            <input type="text" name="id" id="id">
+            <?php 
+            foreach ($this->modelo4->Consultar_Archivos(52) as $registro) {?>
+              <button type="button" class="btn-success" onClick="cfscan('<?php echo $registro['archivo'] ?>');"><img src="../images/icon/<?php echo $registro['prioridad']?>.png"></button>
+            <?php
+              }
+            ?>
+				<button type="button" class="close" onClick="originSrc();" data-dismiss="modal" aria-label="Close" name="close" >
+          <span aria-hidden="true">&times;</span>
 			  </button>
 			</div>
-			<input type="text" id="archivo" name="archivo">
-			<input type="text" id="id" name="id">
 			<div class="embed-container" style="max-height: 900px">
         <iframe width="560" height="315" id="FrameID" name="Frame" src="" class="col-lg-12"></iframe>
-			</div>
-			<input type="hidden" id="id" name="id">
+			</div>       
 		</div>
 	</div>
 </div>
 
 <script type="text/javascript">
-  function newSrc() {
-    var newSrc = document.getElementById("archivo").value;
+  function cfscan(newSrc) {
+    //var neSrc = document.getElementById("archivoanterior").value;
     document.getElementById("FrameID").src=newSrc;
-    //document.getElementById("FrameID").src="../doc/Cartas Fianzas Pendientes.pdf";
   }
-
-  function cfanterior1() {
-    var neSrc = document.getElementById("archivoanterior").value;
-    document.getElementById("FrameID").src="../doc/archivo 11.jpg";
-  }
-  function cfanterior2() {
-    var neSrc = document.getElementById("archivoanterior").value;
-    document.getElementById("FrameID").src="../doc/132-480-1-PB.pdf";
-  }
+  function originSrc() {
+    var newSrc = ""
+    document.getElementById("FrameID").src=newSrc;
+    var idcf = 52;
+  } 
+  
 </script>
-
 <style>
 .embed-container {
     position: relative;
