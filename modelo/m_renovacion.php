@@ -33,5 +33,13 @@
 			}
 			return $this->elemento;
 		}
+		public function Consulta_Pagos()
+		{
+			$sql=$this->db->query("CALL CONSULTA_RENOVACION_PAGOS");
+			while($filas=$sql->fetch(PDO::FETCH_ASSOC)){
+				$this->elemento[]=$filas;
+			}
+			return $this->elemento;
+		}
 	}
 ?>

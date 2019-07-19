@@ -3,9 +3,13 @@
 		<div class="modal-content" style="height: 90%">
 			<div class="modal-header">
 				<h5 class="modal-title" id="smallmodalLabel">Carta fianza escaneada:  </h5>
-            <input type="text" name="id" id="id">
+        <!--<form method="POST" id="form">
+          <input type="text" name="id" id="id" value="">
+          <button type="submit" class="btn" title="Mostrar archivo"><img src="../images/icon/refresh.png" style="width: 70%; height: 70%;"> </button>
+        </form>-->
             <?php 
-            foreach ($this->modelo4->Consultar_Archivos(52) as $registro) {?>
+            $valor = 52;
+            foreach ($this->modelo4->Consultar_Archivos($valor) as $registro) {?>
               <button type="button" class="btn-success" onClick="cfscan('<?php echo $registro['archivo'] ?>');"><img src="../images/icon/<?php echo $registro['prioridad']?>.png"></button>
             <?php
               }
@@ -14,6 +18,8 @@
           <span aria-hidden="true">&times;</span>
 			  </button>
 			</div>
+      
+
 			<div class="embed-container" style="max-height: 900px">
         <iframe width="560" height="315" id="FrameID" name="Frame" src="" class="col-lg-12"></iframe>
 			</div>       
@@ -23,13 +29,11 @@
 
 <script type="text/javascript">
   function cfscan(newSrc) {
-    //var neSrc = document.getElementById("archivoanterior").value;
     document.getElementById("FrameID").src=newSrc;
   }
   function originSrc() {
     var newSrc = ""
     document.getElementById("FrameID").src=newSrc;
-    var idcf = 52;
   } 
   
 </script>

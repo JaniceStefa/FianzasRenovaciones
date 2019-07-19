@@ -39,9 +39,22 @@
             </ul>
             </li>
             <li class="has-sub">
-                <a class="js-arrow" href="../controlador/c_renovacion.php">
-                    <i class="fas fa-refresh"></i>Renovaciones
+                <a class="js-arrow" href="#">
+                    <i class="fas fa-copy"></i>Consultas
+                        <span class="arrow">
+                            <i class="fas fa-angle-down"></i>
+                        </span>
                 </a>
+                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                    <li>
+                        <a href="../controlador/c_renovacion.php">
+                        <i class="fas fa-refresh"></i>Renovaciones</a>
+                    </li>
+                    <li>
+                        <a href="../controlador/c_renovacion_pagos.php">
+                        <i class="fa fa-money"></i>Pagos - Primas</a>
+                    </li>
+                </ul>
             </li>
 
             <?php

@@ -13,7 +13,7 @@ if (isset($_SESSION["usuario"])) {
 
 <head>
     <!-- Title Page-->
-    <title>Dashboard</title>
+    <title>Area Comercial</title>
     <?php include 'complementos/head_pag.php';?>   
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 

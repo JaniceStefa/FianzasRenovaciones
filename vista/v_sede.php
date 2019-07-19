@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <!-- Title Page-->
-    <title>Tablas</title>
+    <title>Oficinas</title>
     <?php include 'complementos/head_pag.php';?>   
 </head>
 

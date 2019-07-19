@@ -2,8 +2,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
+    <meta name="author" content="">
     <meta name="keywords" content="au theme template">
+    <link rel="shortcut icon" type="image/png" href="../images/icon/logo_pag.ico"/>
 
     <!-- Fontfaces CSS-->
     <link href="../assets/css/font-face.css" rel="stylesheet" media="all">

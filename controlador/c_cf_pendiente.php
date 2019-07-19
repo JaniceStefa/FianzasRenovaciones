@@ -1,6 +1,7 @@
 <?php
 	session_start();
     //require_once("../controlador/c_presupuesto.php");
+    
     $controlador=new C_CartaFianza();
     $controlador->Admi();
 
@@ -64,7 +65,7 @@
 		}
 		$controlador->Update($dest_path);
 	}
-
+	
 	class C_CartaFianza{
 
 		private $modelo;
@@ -131,6 +132,12 @@
 			$this->modelo->Eliminar_CF($id);
 
 			echo  '<script> window.location ="../controlador/c_cf_pendiente.php"</script>';
+		}
+
+		public function Detalles(){
+			require_once("../modelo/m_cartafianza.php");
+			$this->model=new M_CartaFianza();
+			require_once("../vista/v_consulta_cf_pendiente_detalles.php");
 		}
 
 	}  

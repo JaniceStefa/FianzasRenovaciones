@@ -8,7 +8,7 @@
 
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="../images/icon/logo_pag.ico"/>
 
     <title>Inicio Sesión - Group Fianzas</title>
 

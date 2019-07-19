@@ -3,7 +3,7 @@
 
 <head>
     <!-- Title Page-->
-    <title>Tablas</title>
+    <title>Clientes</title>
     <?php include 'complementos/head_pag.php';?>   
 </head>
 
@@ -31,7 +31,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                <h3 class="title-5 m-b-35">Tabla Clientes - Empresas</h3>
+                                <h3 class="title-5 m-b-35">Tabla Clientes - Empresas/Consorcios</h3>
                                 <!--BOTONES DE CONTROL-->
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left">   

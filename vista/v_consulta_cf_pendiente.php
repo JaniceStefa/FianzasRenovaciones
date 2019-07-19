@@ -5,7 +5,6 @@
     <!-- Title Page-->
     <title>Cartas Fianzas Pendientes</title>
     <?php include 'complementos/head_pag.php';?>   
-      
 </head>
 
 <body class="animsition" style="padding-right: 0px !important;">
@@ -93,8 +92,9 @@
                                                 <?php }
                                                 } else {
                                                 }
+                                                $varfianza = $registro["id_cartafianza"];
                                                 ?>
-                                                <button type="button" class="btn btn-warning item" data-toggle="modal" data-target="#archivoCarta" title="Visualizar"  data-id="<?php echo $registro['id_cartafianza']?>" data-archivo="<?php echo $registro['archivo']?>"> <i class='zmdi zmdi-eye'></i> </button>
+                                                <a class="btn btn-warning item" title="Visualizar" href="../controlador/c_cf_detalle.php?varfianza=<?php echo $varfianza?>"> <i class='zmdi zmdi-eye'></i> </a>
                                                 </div>
                                                 </td>
                                                 <?php
@@ -172,7 +172,6 @@
       .css("background-color", "rgba(172, 186, 212,0.7)");
   });
 </script>
-
 
 <!--JS para Tabla-->
 <script src="../assets/js/jquery.dataTables.min.js"></script>

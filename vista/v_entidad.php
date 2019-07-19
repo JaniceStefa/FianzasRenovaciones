@@ -3,7 +3,7 @@
 
 <head>
     <!-- Title Page-->
-    <title>Tablas</title>
+    <title>Entidades</title>
     <?php include 'complementos/head_pag.php';?>   
 </head>
 
