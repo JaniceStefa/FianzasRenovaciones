@@ -81,6 +81,9 @@
 		      txtmonto: {
 		        required: true,
 		      },
+		      txtprima: {
+		        required: true,
+		      },
 		      lstoficina: {
 		        required: true,
 		      },
@@ -111,6 +114,9 @@
 		        required: "Ingrese datos válidos",
 		      },
 		      txtmonto: {
+		        required: "Ingrese datos válidos",
+		      },
+		      txtprima: {
 		        required: "Ingrese datos válidos",
 		      },
 		      emision: {

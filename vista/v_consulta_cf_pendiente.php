@@ -5,6 +5,7 @@
     <!-- Title Page-->
     <title>Cartas Fianzas Pendientes</title>
     <?php include 'complementos/head_pag.php';?>   
+    
 </head>
 
 <body class="animsition" style="padding-right: 0px !important;">
@@ -53,18 +54,18 @@
                                 </div>
                                 <!-- DATA TABLE -->
                                 <div class="table-responsive table--no-card m-b-30">
-                                    <table id="mytable" class="table table-data2 table-striped" onmouseover="this.style.cursor='pointer';" onclick="fila();">
+                                    <table id="mytable" class="table table-data3 table-striped" onmouseover="this.style.cursor='pointer';" onclick="fila();">
                                         <thead class="table-earning">
                                             <tr>
-                                                <th>Empresa</th>
+                                                <th>Empresa / Consorcio</th>
                                                 <th>Entidad</th>
                                                 <th>Tipo Carta Fianza</th>  
-                                                <th>Número Carta Fianza</th>
+                                                <th>Número / Código</th>
                                                 <th>Monto Total</th>
-                                                <th>Fecha Emisión</th>
                                                 <th>Vigencia</th>
+                                                <th>Fecha Emisión</th>
                                                 <th>Fecha Vencimiento</th>
-                                                <th>PRIORIDAD</th>
+                                                <th>Renovación</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -77,8 +78,8 @@
                                                 echo "<td>".$registro["descripcion_tipo"]. "</td>";
                                                 echo "<td>".$registro["cod_carta_fianza"]. "</td>";
                                                 echo "<td> S/.".$registro["total_fianza"]. "</td>";
-                                                echo "<td>".date('d/m/Y', strtotime($registro["fecha_emision"]))."</td>";
-                                                echo "<td>".$registro["vigencia"]. " días </td>";
+                                                echo "<td style='font-size:80%;'>".$registro["vigencia"]. " días </td>";
+                                                echo "<td style='font-size:80%;'>".date('d/m/Y', strtotime($registro["fecha_emision"]))."</td>";
                                                 echo "<td>".date('d/m/Y', strtotime($registro["fecha_venc"])). "</td>";
                                                 echo "<td>".$registro["prioridad"]. " </td>";
                                                 echo "<td>"?>
@@ -88,7 +89,7 @@
                                                 if (isset($_SESSION["usuario"])) {
                                                     if ($_SESSION["usuario"]["privilegio"] == 1) {?>
                                                 <button type="button" id="modif" class="btn btn-info item" data-toggle="modal" data-target="#dataUpdate" title="Modificar" data-id="<?php echo $registro['id_cartafianza']?>" data-empresa="<?php echo $registro['nombre_empresa']?>" data-oficina="<?php echo $registro['id_oficina']?>" data-codigo="<?php echo $registro['cod_carta_fianza']?>" data-tipo="<?php echo $registro['id_tipof']?>" data-entidad="<?php echo $registro['id_entidad']?>" data-total="<?php echo $registro['total_fianza']?>" data-emision="<?php echo $registro['fecha_emision']?>" data-vigencia="<?php echo $registro['vigencia']?>"  data-prioridad="<?php echo $registro['prioridad']?>"  data-vencimiento="<?php echo $registro['fecha_venc']?>" data-archivo="<?php echo $registro['archivo']?>"><i class='zmdi zmdi-edit'></i> </button>
-                                                <button type="button" class="btn btn-success item" data-toggle="modal" data-target="#dataDelete" title="Archivar" data-id="<?php echo $registro['id_cartafianza']?>"  ><i class='zmdi zmdi-archive'></i> </button>
+                                                <button type="button" class="btn btn-success item" data-toggle="modal" data-target="#dataDelete" title="Archivar" data-id="<?php echo $registro['id_cartafianza']?>"  ><i class='zmdi zmdi-archive'></i></button>
                                                 <?php }
                                                 } else {
                                                 }
@@ -99,7 +100,6 @@
                                                 </td>
                                                 <?php
                                              } ?>
-                                             
                                         </tbody>
                                     </table>
                                 </div>
@@ -129,13 +129,21 @@
     $('#mytable').DataTable( {
         dom: 'Bfrtip',
         buttons: [
-            'excel', 'pdf', 'print'
+            'excel', 'print',
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                pageSize: 'LEGAL'
+            }
         ],
-        "paging": false,
+        "paging":false,
+        //"pagingType": "full_numbers",
         "language": {
             "paginate": {
               "previous": "Anterior",
-              "next": "Siguiente"
+              "next": "Siguiente",
+              "first": "Primero",
+              "last": "Último",
             }
         },
         "columnDefs": [
@@ -147,6 +155,16 @@
             ],
         "order": []
     } );
+    } );
+    $('#mytable').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                pageSize: 'LEGAL'
+            }
+        ]
     } );
     $('#mytable').on('click', 'tbody tr', function(event) {
        
@@ -163,16 +181,20 @@
     $('#btnmodificar').addClass('au-btn--disabled');
     document.getElementById('btnmodificar').disabled=true;   
 </script>
+<style type="text/css">
+        .table-data2 tbody td{
+        background-color: white;
+        }
+    </style>
 <script>
   <?php $cod = ($_GET['variable1']);?>
   $(function() {
     var codigo = "<?php echo $cod;?>";
-    $("table td:first-child:contains("+codigo+")")
-      .parents("tr")
-      .css("background-color", "rgba(172, 186, 212,0.7)");
+    $("table tr td:first-child:contains("+codigo+")")
+      .parent().find('td')
+      .css("background-color", "rgba(57, 255, 20,0.7)");
   });
 </script>
-
 <!--JS para Tabla-->
 <script src="../assets/js/jquery.dataTables.min.js"></script>
 <script src="../assets/js/dataTables.buttons.min.js"></script>
@@ -183,6 +205,7 @@
 <script src="../assets/js/buttons.html5.min.js"></script>
 <script src="../assets/js/buttons.print.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../assets/css/buttons.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/jquery.dataTables.min.css">
 <style type="text/css">
     .table-striped tbody tr.highlight td { 
         background-color: #acbad4;

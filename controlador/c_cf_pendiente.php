@@ -94,11 +94,22 @@
 			$idoficina = $_POST['lstoficina'];
 			$tipofianza = $_POST['lsttipo'];
 			$totalfianza = $_POST['txtmonto'];
+			$montoprima = $_POST['txtprima'];
+			if (isset($_REQUEST['chkprima']))
+  			{
+    			$tramiteEstado=0; // cancelado
+    			$saldo = 0;
+    		}
+    		else{
+    			$tramiteEstado=1; //vigente
+    			$saldo = $montoprima;
+    		}
 			$vigencia = $_POST['txtvigencia'];
 			$email = $_POST['txtemail'];
 			$telefono = $_POST['txttelef'];
             unset($_POST['aceptar']);
-			$this->modelo->Agregar_CF($codigo, $fechaemision, $fechavenc, $idempresa, $identidad,  $idoficina, $tipofianza, $totalfianza,$vigencia,$dest_path,$email,$telefono);
+            
+			$this->modelo->Agregar_CF($codigo, $fechaemision, $fechavenc, $idempresa, $identidad,  $idoficina, $tipofianza, $totalfianza,$vigencia,$dest_path,$email,$telefono,$montoprima,$tramiteEstado,$saldo);
 			//Response.Redirect()	;	
 			//header("Location: ../controlador/c_sede.php");
 			//Redireccionar a la misma página

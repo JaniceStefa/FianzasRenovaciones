@@ -38,17 +38,13 @@
                                     <!--BUSQUEDA EN BASE DE DATOS-->                                  
                                     <!--EXPORTAR DOCUMENTOS-->
                                     <div class="col-md-2">
-                                    	<?php 
-                                    	$variable1=($_GET['varfianza']);
-                                    	?>
 										<br/>
                                     	<a class="au-btn au-btn-icon au-btn--green au-btn--small" href="../controlador/c_cf_pendiente.php">
                                             Volver</a>
                                             <br/><br/><br/>
                                     
 							            <?php 
-							            $valor = 52;
-							            foreach ($this->modelo->Consultar_Archivos($variable1) as $registro) {?>
+							            foreach ($this->modelo->Consultar_Archivos($_GET['varfianza']) as $registro) {?>
 							              <button type="button" class="btn-success" onClick="cfscan('<?php echo $registro['archivo'] ?>');"><img src="../images/icon/<?php echo $registro['prioridad']?>.png"></button>
 							              <br/><br/>
 							            <?php 

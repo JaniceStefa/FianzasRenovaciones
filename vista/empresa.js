@@ -20,7 +20,7 @@
 		  var telefono = button.data('phone') // Extraer la información de atributos de datos
 		  
 		  var modal = $(this)
-		  modal.find('.modal-title').text('Modificar oficina: '+id)
+		  modal.find('.modal-title').text('Modificar Datos de empresa/Consorcio: ')
 		  modal.find('.modal-body #id').val(id)
 		  modal.find('.modal-body #ruc').val(ruc)
 		  modal.find('.modal-body #nombre').val(nombre)

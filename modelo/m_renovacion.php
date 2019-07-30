@@ -41,5 +41,9 @@
 			}
 			return $this->elemento;
 		}
+		public function Update_Prima($id, $tramiteestado, $saldo){
+			$sql="CALL PRIMA_U('".$id."','".$tramiteestado."','".$saldo."')";
+			$this->db->query($sql);
+		}
 	}
 ?>

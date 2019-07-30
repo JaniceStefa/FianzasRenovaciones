@@ -9,10 +9,18 @@
 			$this->elemento=array();
 		}
 		// Agregar Nuevo Presupuesto a Base de Datos
-		public function Agregar_CF($cod_carta_fianza, $fecha_emision, $fecha_venc, $id_empresa, $id_entidad, $id_oficina, $id_tipo_fianza, $total_fianza, $vigencia, $archivo,$email,$telefono)
+		public function Agregar_CF($cod_carta_fianza, $fecha_emision, $fecha_venc, $id_empresa, $id_entidad, $id_oficina, $id_tipo_fianza, $total_fianza, $vigencia, $archivo,$email,$telefono,$montoprima, $tramiteestado,$saldo)
 		{
-			$sql="CALL FIANZA_A('".$cod_carta_fianza."','".$fecha_emision."','".$fecha_venc."','".$id_empresa."','".$id_entidad."','".$id_oficina."','".$id_tipo_fianza."','".$total_fianza."','".$vigencia ."','". $archivo."','".$email."','".$telefono."')";
+			$sql="CALL FIANZA_A('".$cod_carta_fianza."','".$fecha_emision."','".$fecha_venc."','".$id_empresa."','".$id_entidad."','".$id_oficina."','".$id_tipo_fianza."','".$total_fianza."','".$vigencia ."','". $archivo."','".$email."','".$telefono."','".$montoprima."','".$tramiteestado."','".$saldo."')";
 			$this->db->query($sql);
+		}
+		public function Validar_CF($cod_carta_fianza)
+		{
+			$sql=$this->db->query("CALL VALIDAR_DUPLICADOS('".$cod_carta_fianza."')");
+			while($filas=$sql->fetch(PDO::FETCH_ASSOC)){
+				$this->elemento[]=$filas;
+			}
+			return $this->elemento;
 		}
 		//Modificar Datos del Presupuesto
 		public function Update_CF($cod_carta_fianza, $fecha_emision, $fecha_venc, $id_empresa, $id_entidad, $id_oficina, $id_tipo_fianza, $total_fianza, $vigencia, $id_cartafianza, $archivo, $prioridad){

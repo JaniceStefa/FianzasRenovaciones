@@ -31,7 +31,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                <h3 class="title-5 m-b-35">Tabla Clientes - Empresas/Consorcios</h3>
+                                <h3 class="title-5 m-b-35">Detalle de Empresa: </h3>
                                 <!--BOTONES DE CONTROL-->
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left">   
@@ -46,28 +46,33 @@
                                     <table class="table table-data2 table-striped" >
                                         <thead class="table-earning">
                                             <tr>
-                                                <th>RUC Empresa</th>
-                                                <th>Nombre Empresa</th>
-                                                <th>Email</th>
-                                                <th>Teléf.</th>
+                                                <th>Poliza</th>
+                                                <th>Fecha de emisión</th>
+                                                <th></th>
+                                                <th></th>
                                                 <th> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr class="spacer"></tr>
                                             <?php
+
+                                              foreach ($this->modelo->Consultar_Archivos($_GET['id']) as $registro) {?>
+                                                <button type="button" class="btn-success" onClick="cfscan('<?php echo $registro['archivo'] ?>');"><img src="../images/icon/<?php echo $registro['prioridad']?>.png"></button>
+                                                <br/><br/>
+                                              <?php 
+                                            }
+                                              ?>
                                             foreach($this->modelo->Mostrar_Empresa() as $registro){
                                                 echo "<tr class='tr-shadow'>";
                                                 echo "<td>".$registro["ruc_empresa"]. "</a></td>";
                                                 echo "<td>".$registro["nombre_empresa"]. "</td>";
                                                 echo "<td> <span class='block-email'>".$registro["contacto_email"]. "</span></td>";
                                                 echo "<td>".$registro["contacto_telefono"]. "</td>";
-                                                echo "<td>";
-                                                $id = $registro["id_empresa"];
+                                                echo "<td>";                                              
                                                 ?>
                                                 <div class="table-data-feature">
                                                 <button type="button" class="btn btn-info item" data-toggle="modal" data-target="#dataUpdate" title="Modificar" data-id="<?php echo $registro['id_empresa']?>" data-ruc="<?php echo $registro['ruc_empresa']?>" data-nombre="<?php echo $registro['nombre_empresa']?>" data-email="<?php echo $registro['contacto_email']?>" data-phone="<?php echo $registro['contacto_telefono'] ?>" ><i class='zmdi zmdi-edit'></i> </button>
-                                                <a class="btn btn-warning item" title="Visualizar" href="../controlador/c_empresa.php?id=<?php echo $id?>"> <i class='zmdi zmdi-eye'></i> </a>
                                                 </div>
                                                 </td>
                                                 <?php
