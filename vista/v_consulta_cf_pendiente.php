@@ -73,14 +73,14 @@
                                             <?php
                                             
                                             foreach($this->modelo->Mostrar_CF() as $registro){
-                                                echo "<tr class='tr-shadow'><td>".$registro["nombre_empresa"]. "</td>";
+                                                echo "<tr class='tr-shadow'><td style='font-size:80%;'>".$registro["nombre_empresa"]. "</td>";
                                                 echo "<td>".$registro["nombre_entidad"]. "</td>";
                                                 echo "<td>".$registro["descripcion_tipo"]. "</td>";
                                                 echo "<td>".$registro["cod_carta_fianza"]. "</td>";
-                                                echo "<td> S/.".$registro["total_fianza"]. "</td>";
-                                                echo "<td style='font-size:80%;'>".$registro["vigencia"]. " días </td>";
-                                                echo "<td style='font-size:80%;'>".date('d/m/Y', strtotime($registro["fecha_emision"]))."</td>";
-                                                echo "<td>".date('d/m/Y', strtotime($registro["fecha_venc"])). "</td>";
+                                                echo "<td> S/.".number_format($registro["total_fianza"], 2, ".", ","). "</td>";
+                                                echo "<td align='center' style='font-size:80%;'>".$registro["vigencia"]. " días </td>";
+                                                echo "<td align='center'>".date('d/m/Y', strtotime($registro["fecha_emision"]))."</td>";
+                                                echo "<td align='center'>".date('d/m/Y', strtotime($registro["fecha_venc"])). "</td>";
                                                 echo "<td>".$registro["prioridad"]. " </td>";
                                                 echo "<td>"?>
 

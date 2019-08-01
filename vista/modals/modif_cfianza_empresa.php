@@ -54,7 +54,20 @@
                       <input type="hidden" id="txtprioridad" name="txtprioridad" placeholder="" class="form-control" require>
                   </div>
               </div>
-          </div>             
+          </div>   
+          <div class="col col-md-6">
+                <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="text-input" class=" form-control-label">Pago Prima</label>
+                </div>
+                <div class="col-12 col-md-5">
+                    <input type="number" id="txtprima" name="txtprima" placeholder="" class="form-control" require>
+                </div>
+                <div class="col col-md-4">
+                    <input type="checkbox" name="chkprima" require>Cancelado
+                </div>
+                </div>
+            </div>          
         </div>
         
         <div class="row">

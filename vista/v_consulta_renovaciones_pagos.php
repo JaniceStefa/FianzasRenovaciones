@@ -3,7 +3,7 @@
 
 <head>
     <!-- Title Page-->
-    <title>Cartas Fianzas Pendientes</title>
+    <title>Renovaciones - Primas</title>
     <?php include 'complementos/head_pag.php';?>   
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -65,18 +65,23 @@
                                                 echo "<tr class='tr-shadow' id='reg' ><td>".$registro["cod_cartafianza"]. "</td>";
                                                 echo "<td>".$registro["nombre_empresa"]. "</td>";
                                                 if ($registro["tramite_estado"] == 1)
-                                                    echo "<td id='estado'>VIG</td>";
+                                                    echo "<td align='center' id='estado'>VIG</td>";
                                                 else
-                                                    echo "<td>CANC</td>";
+                                                    echo "<td align='center'>CANC</td>";
 
-                                                echo "<td> S/.".$registro["total_fianza"]. "</td>";
+                                                echo "<td align='center'> S/.".number_format($registro["total_fianza"], 2, ".", ","). "</td>";
                                                 echo "<td>".date('d/m/Y', strtotime($registro["fecha_emision"]))."</td>";
                                                 echo "<td>".date('d/m/Y', strtotime($registro["fecha_venc"])). "</td>";
-                                                echo "<td> S/.".$registro["saldo"]. "</td>";
-                                                echo "<td> S/.".$registro["prima"]. "</td>";
+                                                echo "<td align='center'> S/.".number_format($registro["saldo"], 2, ".", ","). "</td>";
+                                                echo "<td align='center'> S/.".number_format($registro["prima"], 2, ".", ","). "</td>";
                                                 echo "<td>";?>
                                                 <div class="table-data-feature">
-                                                <button type="button" class="btn btn-success item" data-toggle="modal" data-target="#dataEstado" title="Cambiar Estado" data-id="<?php echo $registro["id_renovacion"]?>" data-estado="<?php echo $registro["tramite_estado"]?>" data-saldo="<?php echo $registro["prima"]?>"><i class='zmdi zmdi-refresh'></i> </button></div>
+                                                <button type="button" class="btn btn-success item" data-toggle="modal" data-target="#dataEstado" title="Cambiar Estado" data-id="<?php echo $registro["id_renovacion"]?>" data-estado="<?php echo $registro["tramite_estado"]?>" data-saldo="<?php echo $registro["prima"]?>"><i class='zmdi zmdi-refresh'></i> </button>
+                                                <?php if ($registro['voucher'] != NULL)
+                                                {?>
+
+                                                <button type="button" class="btn btn-warning item" data-toggle="modal" data-target="#archivoC" title="Visualizar" id="#archivoCheque" data-archivo="<?php echo $registro['voucher']?>" data-id="<?php echo $registro['id_renovacion']?>" ><i class='zmdi zmdi-eye'></i> </button><?php } ?>
+                                                </div></td>
                                                 <?php
                                                 }?>
                                         </tbody>
@@ -93,17 +98,23 @@
             </div>       
             <!-- MODALES -->    
             <?php include 'modals/modif_renovacion_pagos.php';?>  
+            <?php include 'modals/renovacion_pagos_voucher.php';?> 
             </div>
         </div>
     </div>
 
-<script src="../vista/estado_pagos.js"></script>
+<script src="../vista/estado_pagos_1.js"></script>
 <script>
     $(document).ready(function() {
     $('#mytable').DataTable( {
         dom: 'Bfrtip',
         buttons: [
-            'excel', 'pdf', 'print'
+            'excel', 'print',
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                pageSize: 'LEGAL'
+            }
         ],
         "paging": false,
         "language": {

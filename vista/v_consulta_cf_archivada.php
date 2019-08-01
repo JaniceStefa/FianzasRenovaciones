@@ -47,14 +47,14 @@
                                         <tbody>
                                             <?php
                                             foreach($this->modelo->Mostrar_CF_Archi() as $registro){
-                                                echo "<tr><td>".$registro["nombre_empresa"]. "</td>";
+                                                echo "<tr><td style='font-size:80%;'>".$registro["nombre_empresa"]. "</td>";
                                                 echo "<td>".$registro["nombre_entidad"]. "</td>";
                                                 echo "<td>".$registro["descripcion_tipo"]. "</td>";
                                                 echo "<td>".$registro["cod_carta_fianza"]. "</td>";
-                                                echo "<td> S/.".$registro["total_fianza"]. "</td>";
-                                                echo "<td>".date('d/m/Y', strtotime($registro["fecha_emision"])). "</td>";
-                                                echo "<td>".$registro["vigencia"]. " días </td>";
-                                                echo "<td>".date('d/m/Y', strtotime($registro["fecha_venc"])). "</td>";
+                                                echo "<td> S/.".number_format($registro["total_fianza"], 2, ".", ","). "</td>";
+                                                echo "<td align='center'>".date('d/m/Y', strtotime($registro["fecha_emision"])). "</td>";
+                                                echo "<td align='center'>".$registro["vigencia"]. " días </td>";
+                                                echo "<td align='center'>".date('d/m/Y', strtotime($registro["fecha_venc"])). "</td>";
                                                  echo "<td>"?>
 
                                                 <div class="table-data-feature">

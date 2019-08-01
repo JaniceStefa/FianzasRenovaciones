@@ -130,8 +130,18 @@
 			$vigencia = $_POST['txtvigencia'];
 			$prioridad = $_POST['txtprioridad'];
 			$id_cartafianza = $_POST['id'];
+			$montoprima = $_POST['txtprima'];
+			if (isset($_REQUEST['chkprima']))
+  			{
+    			$tramiteEstado=0; // cancelado
+    			$saldo = 0;
+    		}
+    		else{
+    			$tramiteEstado=1; //vigente
+    			$saldo = $montoprima;
+    		}
 			unset($_POST['update']);
-            $this->modelo->Update_CF($codigo, $fechaemision, $fechavenc, $idempresa, $identidad, $idoficina, $tipofianza, $totalfianza, $vigencia, $id_cartafianza, $dest_path, $prioridad);
+            $this->modelo->Update_CF($codigo, $fechaemision, $fechavenc, $idempresa, $identidad, $idoficina, $tipofianza, $totalfianza, $vigencia, $id_cartafianza, $dest_path, $prioridad, $montoprima, $tramiteEstado, $saldo);
             echo  '<script> window.location ="../controlador/c_cf_pendiente.php"</script>';
 		}
 

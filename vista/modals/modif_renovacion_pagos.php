@@ -15,7 +15,7 @@
 
         <div class="row form-group">
           <div class="col col-md-3">
-            <label for="text-input" class=" form-control-label">Estado</label>
+            <label for="text-input" class=" form-control-label">Estado: </label>
           </div>
           <div class="col-12 col-md-6">
            <input type="radio" name="estado" value="cancelado"> Cancelado
@@ -26,6 +26,19 @@
            <br/>
            <input type="hidden" name="saldo" id="saldo">
           </div>
+        </div>
+        <div class="row">
+        <div class="col-md-12">
+            <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="text-input" class=" form-control-label">Adjuntar voucher: </label>
+            </div>
+            <div class="col-12 col-md-7">
+                <input type="file" name="uploadedFile" id="uploadedFile"></input>
+                <!--<input type="submit" name="uploadBtn" value="Upload"/>-->
+            </div>
+            </div>
+        </div>    
         </div>
         
         <!--<div class="row form-group">

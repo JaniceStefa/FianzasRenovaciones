@@ -28,19 +28,19 @@
                         <div class="col-lg-7" align="right">
                         Número de Carta Fianza: </br>
                         Fecha de vencimiento: </br>
-                        Empresa/Consorcio: </br>
                         Monto Total: </br>
                         Entidad: </br>
+                        Empresa/Consorcio: </br>
                         </div>
                         <div class="col-lg-5">
                         <?php
                             echo " " .$registro["cod_carta_fianza"]. "</br> ";
                             $variable1 = $registro["nombre_empresa"];
-                            echo " ".date('d/m/Y', strtotime($registro["fecha_venc"])). "</br>";?>
+                            echo " ".date('d/m/Y', strtotime($registro["fecha_venc"])). "</br>";
+                            echo " " .number_format($registro["total_fianza"], 2, ".", ","). "</br> ";
+                            echo " " .$registro["nombre_entidad"]. "</br> ";?>
                             <a href="../controlador/c_cf_pendiente.php?variable1=<?php echo $variable1?>">
                             <?php echo " ".$registro["nombre_empresa"]. "</a> </br>";
-                            echo " " .$registro["total_fianza"]. "</br> ";
-                            echo " " .$registro["nombre_entidad"]. "</br> ";
                         echo"</div>";
                     echo"</div>";                                                                                              
                     echo "<hr>";
@@ -61,19 +61,19 @@
                         <div class="col-lg-7" align="right">
                         Número de Carta Fianza: </br>
                         Fecha de vencimiento: </br>
-                        Empresa/Consorcio: </br>
                         Monto Total: </br>
                         Entidad: </br>
+                        Empresa/Consorcio: </br>
                         </div>
                         <div class="col-lg-5">
                         <?php
                             echo " " .$registro["cod_carta_fianza"]. "</br> ";
                             $variable1 = $registro["nombre_empresa"];
-                            echo " ".date('d/m/Y', strtotime($registro["fecha_venc"])). "</br>";?>
+                            echo " ".date('d/m/Y', strtotime($registro["fecha_venc"])). "</br>";
+                            echo " " .number_format($registro["total_fianza"], 2, ".", ","). "</br> ";
+                            echo " " .$registro["nombre_entidad"]. "</br> ";?>
                             <a href="../controlador/c_cf_pendiente.php?variable1=<?php echo $variable1?>">
                             <?php echo " ".$registro["nombre_empresa"]. "</a> </br>";
-                            echo " " .$registro["total_fianza"]. "</br> ";
-                            echo " " .$registro["nombre_entidad"]. "</br> ";
                         echo"</div>";
                     echo"</div>";                                                                                              
                     echo "<hr>";

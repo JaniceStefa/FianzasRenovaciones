@@ -50,7 +50,7 @@
                                 <div class="table-responsive table--no-card m-b-30">
                                     <table id="mytable" class=" table table-data2 table-striped" onmouseover="this.style.cursor='pointer';">
                                         <thead class="table-earning">
-                                            <tr>
+                                            <tr align="center">
                                                 <th>Número de Cheque</th>
                                                 <th>Empresa</th>
                                                 <th>Número Carta Fianza</th>
@@ -69,10 +69,10 @@
                                                 echo "<tr class='tr-shadow'><td>".$registro["numero_cheque"]. "</td>";
                                                 echo "<td>".$registro["nombre_empresa"]. "</td>";
                                                 echo "<td>".$registro["cod_carta_fianza"]. "</td>";
-                                                echo "<td> S/.".$registro["monto"]. "</td>";
+                                                echo "<td> S/.".number_format($registro["monto"], 2, ".", ",")."</td>";
                                                 echo "<td>".$registro["banco"]. "</td>";
-                                                echo "<td>".date('d/m/Y', strtotime($registro["fecha_giro"]))."</td>";
-                                                echo "<td>".date('d/m/Y', strtotime($registro["fecha_cobrar"]))."</td>";
+                                                echo "<td align='center'>".date('d/m/Y', strtotime($registro["fecha_giro"]))."</td>";
+                                                echo "<td align='center'>".date('d/m/Y', strtotime($registro["fecha_cobrar"]))."</td>";
                                                 echo "<td>".$registro["archivo"]. "</td>";
                                                 echo "<td>"?>
 

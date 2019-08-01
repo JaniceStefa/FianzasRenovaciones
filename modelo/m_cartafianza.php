@@ -23,8 +23,8 @@
 			return $this->elemento;
 		}
 		//Modificar Datos del Presupuesto
-		public function Update_CF($cod_carta_fianza, $fecha_emision, $fecha_venc, $id_empresa, $id_entidad, $id_oficina, $id_tipo_fianza, $total_fianza, $vigencia, $id_cartafianza, $archivo, $prioridad){
-			$sql="CALL FIANZA_U('".$id_cartafianza."','".$cod_carta_fianza."','".$fecha_emision."','".$fecha_venc."','".$id_empresa."','".$id_entidad."','".$id_oficina."','".$id_tipo_fianza."','".$total_fianza."','".$vigencia ."','".$archivo."','".$prioridad ."')";
+		public function Update_CF($cod_carta_fianza, $fecha_emision, $fecha_venc, $id_empresa, $id_entidad, $id_oficina, $id_tipo_fianza, $total_fianza, $vigencia, $id_cartafianza, $archivo, $prioridad,$montoprima, $tramiteestado,$saldo){
+			$sql="CALL FIANZA_U('".$id_cartafianza."','".$cod_carta_fianza."','".$fecha_emision."','".$fecha_venc."','".$id_empresa."','".$id_entidad."','".$id_oficina."','".$id_tipo_fianza."','".$total_fianza."','".$vigencia ."','".$archivo."','".$prioridad."','".$montoprima."','".$tramiteestado."','".$saldo."')";
 			$this->db->query($sql);
 		}
 		//Mostrar listado de Presupuesto

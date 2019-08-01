@@ -60,6 +60,11 @@
 			$this->modelo->Eliminar_Empresa($id_empresa);
 			echo  '<script> window.location ="../controlador/c_empresa.php" </script>';
 		}
+		public function Reporte(){
+			require_once("../modelo/m_empresa.php");
+			$this->modelo=new M_Empresa();
+			require_once("../vista/reporte.php");
+		}
 	}  
 ?>
 
