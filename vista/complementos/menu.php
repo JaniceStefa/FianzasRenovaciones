@@ -56,41 +56,37 @@
                     </li>
                 </ul>
             </li>
-
-            <?php
-            if (isset($_SESSION["usuario"])) {
-                if ($_SESSION["usuario"]["privilegio"] == 1) {?>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-table""></i>Tablas
-                                <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                            </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="../controlador/c_empresa.php">
-                                    <i class="fa fa-user"></i>Clientes</a>
-                                </li>
-                                <li>
-                                    <a href="../controlador/c_entidad.php">
-                                    <i class="fa fa-folder-open"></i>Entidades</a>
-                                </li>
-                                <li>
-                                    <a href="../controlador/c_sede.php">
-                                        <i class="fa fa-building"></i>Oficinas</a>
-                                </li>
-                                <li>
-                                    <a href="../controlador/c_empleado.php">
-                                    <i class="fas fa-briefcase"></i>Empleados</a>
-                                </li>
-                            </ul>
-                        </li>
+            <li class="has-sub">
+                <a class="js-arrow" href="#">
+                    <i class="fas fa-table""></i>Tablas
+                    <span class="arrow">
+                        <i class="fas fa-angle-down"></i>
+                    </span>
+                </a>
+                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                <li>
+                    <a href="../controlador/c_empresa.php">
+                        <i class="fa fa-user"></i>Clientes</a>
+                </li>
+                <?php
+                if (isset($_SESSION["usuario"])) {
+                    if ($_SESSION["usuario"]["privilegio"] == 1) {?>
+                    <li>
+                    <a href="../controlador/c_entidad.php">
+                        <i class="fa fa-folder-open"></i>Entidades</a>
+                    </li>
+                    <li>
+                    <a href="../controlador/c_sede.php">
+                        <i class="fa fa-building"></i>Oficinas</a>
+                    </li>
+                    <li>
+                    <a href="../controlador/c_empleado.php">
+                        <i class="fas fa-briefcase"></i>Empleados</a>
+                    </li>
                 <?php }
-            } else {
-            }
-            ?>
-            
+                } else {}?>
+            </ul>
+            </li>
             </ul>
     </nav>
     </div>

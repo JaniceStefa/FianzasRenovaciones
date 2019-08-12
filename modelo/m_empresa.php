@@ -37,14 +37,13 @@
 			$sql="CALL REPORTE_EMPRESA('".$id_empresa."')";
 			$this->db->query($sql);
 		}
-		public function Reporte_Empresa(){
+		public function Reporte_Empresa($ID){
 
-			$sql=$this->db->query("CALL REPORTE_EMPRESA");
+			$sql=$this->db->query("CALL REPORTE_EMPRESA('".$ID."')");
 			while($filas=$sql->fetch(PDO::FETCH_ASSOC)){
 				$this->empresa[]=$filas;
 			}
 			return $this->empresa;
 		}
-
 	}
 ?>

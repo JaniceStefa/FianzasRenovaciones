@@ -5,17 +5,9 @@
     <!-- Title Page-->
     <title>GF Cartas Fianzas Archivadas</title>
     <?php include 'complementos/head_pag.php';?>   
-    <!-- Datatable CSS -->
-	<link href='../assets/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
-
-	<!-- jQuery Library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-	<!-- Datatable JS -->
-	<script src="../assets/js/jquery.dataTables.min.js"></script>
 </head>
 
-<body >
+<body class="animsition">
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
         <header class="header-mobile d-block d-lg-none">
@@ -46,7 +38,7 @@
                                 </div>
                                 <!-- DATA TABLE -->
                                 <div class="table-responsive table--no-card m-b-30">
-                                    <table class="table table-data3 table-striped" id="tabletocsv">
+                                    <table class="table table-data2 table-striped" id="tabletocsv">
                                         <thead>
                                             <tr>
                                                 <th>Empresa</th><th>Entidad</th><th>Tipo Carta Fianza</th><th>Número Carta Fianza</th><th>Monto Total</th><th>Fecha Emisión</th><th>Vigencia</th><th>Fecha Vencimiento</th><th></th>
@@ -68,7 +60,7 @@
                                                 <div class="table-data-feature">
                                                 <button type="button" class="btn btn-warning item" data-toggle="modal" data-target="#archivoCarta" title="Visualizar" id="#archivoCarta" data-archivo="<?php echo $registro['archivo']?>" data-id="<?php echo $registro['id_cartafianza']?>" ><i class='zmdi zmdi-eye'></i> </button>
                                                 </div>
-                                                </td></tr>
+                                                </td>
                                                 <?php
                                              } ?>
                                              
@@ -120,20 +112,14 @@ $(document).ready(function() {
     $(document).ready(function() {
     $('#tabletocsv').DataTable( {
         dom: 'Bfrtip',
-         buttons: [
-            'excel', 'print',
-            {
-                extend: 'pdfHtml5',
-                orientation: 'landscape',
-                pageSize: 'LEGAL'
-            }
+        buttons: [
+            'excel', 'pdf', 'print'
         ],
-        //"paging": false,
-        "paginate" : "full_numbers",
+        "paging": false,
         "language": {
             "paginate": {
               "previous": "Anterior",
-              "next": "Siguiente",
+              "next": "Siguiente"
             }
         },
         "order": []
@@ -141,11 +127,9 @@ $(document).ready(function() {
     } );
 </script>
 <!--<script src="../assets/js/jquery-3.3.1.js"></script>-->
-<script src="../assets/js/code.jquery/jquery-3.3.1.js"></script>
-<script src="../assets/css/jquery.dataTables.min.css"></script>
 <script src="../assets/js/jquery.dataTables.min.js"></script>
 <script src="../assets/js/dataTables.buttons.min.js"></script>
-<script src="../assets/js/buttons.flash.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>

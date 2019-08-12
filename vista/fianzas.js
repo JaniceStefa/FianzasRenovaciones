@@ -28,7 +28,7 @@
 		  //var oficina = button.data('lstoficina') // Extraer la información de atributos de datos
 		  
 		  var modal = $(this)
-		  modal.find('.modal-title').text('Agregar Renovación: '+id)
+		  modal.find('.modal-title').text('Agregar Renovación: ')
 		  modal.find('.modal-body #id').val(id)
 		  modal.find('.modal-body #txtnumero').val(codigo)
 		  modal.find('.modal-body #lsttipo').val(tipo)
@@ -49,7 +49,7 @@
 		  var button = $(event.relatedTarget) // Botón que activó el modal
 		  var id = button.data('id') // Extraer la información de atributos de datos
 		  var modal = $(this)
-		  modal.find('.modal-title').text('Archivar elemento: '+id)
+		  modal.find('.modal-title').text('Archivar elemento: ')
 		  modal.find('#id').val(id)		
 		})
 
@@ -58,7 +58,7 @@
 		  	var id = button.data('id') // Extraer la información de atributos de datos
 		  	var archivo = button.data('archivo')
 		  	var modal = $(this)
-		  	modal.find('.modal-title').text('Carta Escaneada: '+id)
+		  	modal.find('.modal-title').text('Carta Escaneada: ')
 		  	modal.find('#id').val(id)
 		  	modal.find('#archivo').val(archivo)
 		})

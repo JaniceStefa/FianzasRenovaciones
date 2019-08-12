@@ -3,23 +3,16 @@
 
 <head>
     <!-- Title Page-->
-    <title>Renovaciones - Primas</title>
-    <?php include 'complementos/head_pag.php';?>   
+    <title>Empresas/Consorcios</title>
+    <?php include 'complementos/head_pag.php';?>  
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <!-- Datatable CSS -->
-    <link href='../assets/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
 
-    <!-- jQuery Library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- Datatable JS -->
-    <script src="../assets/js/jquery.dataTables.min.js"></script>
 </head>
 
-<body>
+<body class="animsition">
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
         <header class="header-mobile d-block d-lg-none">
@@ -27,7 +20,7 @@
         </header>
         <!-- END HEADER MOBILE-->
         <!-- MENU SIDEBAR-->
-        <?php include 'complementos/menu.php';?>       
+       <?php include 'complementos/menu.php';?>       
         <!-- END MENU SIDEBAR-->
         <!-- PAGE CONTAINER-->
         <div class="page-container" id="contenido">
@@ -43,59 +36,30 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                <h3 class="title-5 m-b-35">RENOVACIONES - PAGOS </h3>
+                                <h3 class="title-5 m-b-35">EMPRESAS/CONSORCIOS</h3>
                                 <!--BOTONES DE CONTROL-->
                                 <div class="table-data__tool">
-                                    <!--BUSQUEDA EN BASE DE DATOS-->                                  
                                     <!--EXPORTAR DOCUMENTOS-->
                                     <div class="table-data__tool-right">                                    
+                                        
                                     </div>
                                 </div>
                                 <!-- DATA TABLE -->
                                 <div class="table-responsive table--no-card m-b-30">
-                                    <table id="mytable" class="table table-data2 table-striped" onmouseover="this.style.cursor='pointer';" onclick="fila();">
+                                    <table id="mytable" class=" table table-data2 table-striped" onmouseover="this.style.cursor='pointer';">
                                         <thead class="table-earning">
-                                            <tr>
-                                                <th>Poliza</th>
-                                                <th>Empresa/Consorcio</th>
-                                                <th>Estado</th>  
-                                                <th>Importe</th>
-                                                <th>Fecha Emisión</th>
-                                                <th>Fecha Vencimiento</th>
-                                                <th>Saldo</th>
-                                                <th>Prima</th>
-                                                <th></th>
+                                            <tr align="center">
+                                                <th>RUC Empresa</th>
+                                                <th>Nombre Empresa</th>
+                                                <th>Email</th>
+                                                <th>Teléf.</th>
+                                                <th> </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                             <?php
-                                            foreach($this->modelo->Consulta_Pagos() as $registro){ 
-                                                echo "<tr class='tr-shadow' id='reg' ><td>".$registro["cod_cartafianza"]. "</td>";
-                                                echo "<td>".$registro["nombre_empresa"]. "</td>";
-                                                if ($registro["tramite_estado"] == 1)
-                                                    echo "<td align='center' id='estado'>VIG</td>";
-                                                else
-                                                    echo "<td align='center'>CANC</td>";
-
-                                                echo "<td align='center'> S/.".number_format($registro["total_fianza"], 2, ".", ","). "</td>";
-                                                echo "<td>".date('d/m/Y', strtotime($registro["fecha_emision"]))."</td>";
-                                                echo "<td>".date('d/m/Y', strtotime($registro["fecha_venc"])). "</td>";
-                                                echo "<td align='center'> S/.".number_format($registro["saldo"], 2, ".", ","). "</td>";
-                                                echo "<td align='center'> S/.".number_format($registro["prima"], 2, ".", ","). "</td>";
-                                                echo "<td>";?>
-                                                <div class="table-data-feature">
-                                                <?php 
-                                                if (isset($_SESSION["usuario"])) {
-                                                    if ($_SESSION["usuario"]["privilegio"] == 1) {?>
-                                                    <button type="button" class="btn btn-success item" data-toggle="modal" data-target="#dataEstado" title="Cambiar Estado" data-id="<?php echo $registro["id_renovacion"]?>" data-estado="<?php echo $registro["tramite_estado"]?>" data-saldo="<?php echo $registro["prima"]?>"><i class='zmdi zmdi-refresh'></i> </button>
-                                                <?php }
-                                                } else{}?>
-                                                <?php if ($registro['voucher'] != NULL)
-                                                {?>
-                                                <button type="button" class="btn btn-warning item" data-toggle="modal" data-target="#archivoC" title="Visualizar" id="#archivoCheque" data-archivo="<?php echo $registro['voucher']?>" data-id="<?php echo $registro['id_renovacion']?>" ><i class='zmdi zmdi-eye'></i> </button><?php } ?>
-                                                </div></td>
-                                                <?php
-                                                }?>
+                                            <?php
+                                           
+                                           ?>                     
                                         </tbody>
                                     </table>
                                 </div>
@@ -107,41 +71,41 @@
                         </div>
                     </div>
                 </div>
-            </div>       
-            <!-- MODALES -->    
-            <?php include 'modals/modif_renovacion_pagos.php';?>  
-            <?php include 'modals/renovacion_pagos_voucher.php';?> 
+            </div>           
+            
+            <!-- MODALES -->
+            <?php include("modals/agregar_empresa.php");?>
+            <?php include("modals/modif_empresa.php");?>
+            <?php include("modals/eliminar_empresa.php");?>
             </div>
         </div>
     </div>
 
-<script src="../vista/estado_pagos_1.js"></script>
+<script src="../vista/chk1.js"></script>
 <script>
     $(document).ready(function() {
     $('#mytable').DataTable( {
         dom: 'Bfrtip',
         buttons: [
-            'excel', 'print',
-            {
-                extend: 'pdfHtml5',
-                orientation: 'landscape',
-                pageSize: 'LEGAL'
-            }
-        ],
-        "paginate": "full_numbers",
+            'excel', 'pdf', 'print'
+        ], 
+        "paging": false,
         "language": {
             "paginate": {
               "previous": "Anterior",
               "next": "Siguiente"
             }
         },
+        "columnDefs": [
+                {
+                "targets": [ 7 ],
+                "visible": false,
+                "searchable": false
+                }
+            ],
         "order": []
     } );
     } );
-    $('#mytable').on('click', 'tbody tr', function(event) {
-       
-        $(this).addClass('highlight').siblings().removeClass('highlight');
-    });
 </script>
 
 <!-- Jquery JS-->
@@ -186,3 +150,4 @@
 </style>
 </body>
 </html>
+<!-- end document-->

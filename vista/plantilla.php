@@ -7,15 +7,17 @@ class PDF extends FPDF
 function Header()
 {
     // Logo
-    $this->Image('../images/icon/logo-t.png',10,8,33);
+    $this->Image('../images/icon/logo-t.png',10,8,50);
     // Arial bold 15
     $this->SetFont('Arial','B',15);
     // Movernos a la derecha
     $this->Cell(40);
     // Título
-    $this->Cell(120,10,'Reporte de Empresa',0,0,'C');
-    // Salto de línea
-    $this->Ln(20);
+    $this->Ln(10);
+    $this->Cell(270,10,'ESTADO DE CUENTA DE CLIENTES AL:',0,0,'C');
+    $this->Ln(5);
+    $this->Cell(270,10,date('d/m/Y'),0,0,'C');
+    $this->Ln(10);
 }
 
 // Pie de página
