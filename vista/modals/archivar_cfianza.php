@@ -8,7 +8,7 @@
         <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <input type="hidden" id="id" name="id"> 
+      <input type="text" id="id" name="id"> 
 
       <div class="modal-body">
         <p>¿Está seguro que desea archivar la carta fianza?</p>

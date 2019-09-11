@@ -23,9 +23,7 @@
                 <?php
                     require_once("../modelo/m_renovacion.php");
                     $modelo=new M_Renovacion();
-                    foreach ($modelo->Consulta_2() as $registro) {
-                    if($registro['aviso'] == 0){
-                    ?>
+                    foreach ($modelo->Consulta_2() as $registro) {?>
                     <div class="row">
                         <div class="col-lg-7" align="right">
                         Número de Carta Fianza: </br>
@@ -44,24 +42,11 @@
                             echo " " .$registro["nombre_entidad"]. "</br> ";
                             echo " " .$registro["descripcion_tipo"]. "</br> ";?>
                             <a href="../controlador/c_cf_pendiente.php?variable1=<?php echo $variable1?>">
-                            <?php echo " ".$registro["nombre_empresa"]. "</a> </br>";?>
-                        </div>
-                    </div>                                                                                            
-                    <hr>
-                    <?php }
-                    else{?>
-                        <div class="row">
-                            <div class="col-lg-7" align="right">
-                                <p>Empresa/Consorcio: </p>
-                            </div>
-                            <div class="col-lg-5">
-                                <a href="../controlador/c_cf_pendiente.php?variable1=<?php echo $variable1?>">
-                                <?php echo " ".$registro["nombre_empresa"]. "</a> </p>";?>
-                            </div>
-                        </div>
-                        <hr>
-                    <?php }
-                    }?>  
+                            <?php echo " ".$registro["nombre_empresa"]. "</a> </br>";
+                        echo"</div>";
+                    echo"</div>";                                                                                              
+                    echo "<hr>";
+                } ?> 
                 </p>
             </div>
         </div>
@@ -73,9 +58,7 @@
                 <?php
                     require_once("../modelo/m_renovacion.php");
                     $modelo1=new M_Renovacion();
-                    foreach ($modelo1->Consulta_3() as $registro) {
-                    if($registro['aviso'] == 0){
-                    ?>
+                    foreach ($modelo1->Consulta_3() as $registro) {?>
                     <div class="row">
                         <div class="col-lg-7" align="right">
                         Número de Carta Fianza: </br>
@@ -93,24 +76,11 @@
                             echo " " .$registro["nombre_entidad"]. "</br> ";
                             echo " " .$registro["descripcion_tipo"]. "</br> ";?>
                             <a href="../controlador/c_cf_pendiente.php?variable1=<?php echo $variable1?>">
-                            <?php echo " ".$registro["nombre_empresa"]. "</a> </br>";?>
-                        </div>
-                    </div>
-                    <hr>
-                    <?php }
-                    else{?>
-                        <div class="row">
-                            <div class="col-lg-7" align="right">
-                                <p>Empresa/Consorcio: </p>
-                            </div>
-                            <div class="col-lg-5">
-                                <a href="../controlador/c_cf_pendiente.php?variable1=<?php echo $variable1?>">
-                                <?php echo " ".$registro["nombre_empresa"]. "</a> </p>";?>
-                            </div>
-                        </div>
-                        <hr>
-                    <?php }
-                    }?>  
+                            <?php echo " ".$registro["nombre_empresa"]. "</a> </br>";
+                        echo"</div>";
+                    echo"</div>";                                                                                              
+                    echo "<hr>";
+                } ?> 
                 </p>
             </div>
         </div>

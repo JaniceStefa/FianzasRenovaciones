@@ -41,9 +41,18 @@
 			}
 			return $this->elemento;
 		}
-		public function Update_Prima($id, $tramiteestado, $saldo,$voucher){
-			$sql="CALL PRIMA_U('".$id."','".$tramiteestado."','".$saldo."','".$voucher."')";
+		public function Update_Prima($id, $tramiteestado, $saldo,$voucher,$prima){
+			$sql="CALL PRIMA_U('".$id."','".$tramiteestado."','".$saldo."','".$voucher."','".$prima."')";
 			$this->db->query($sql);
 		}
+		public function Estado_Pendiente($id){
+			$sql="CALL ESTADO_PENDIENTE('".$id."')";
+			$this->db->query($sql);
+		}
+		public function Estado_Original($id){
+			$sql="CALL ESTADO_ORIGINAL('".$id."')";
+			$this->db->query($sql);
+		}
+
 	}
 ?>

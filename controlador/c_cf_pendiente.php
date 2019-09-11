@@ -3,8 +3,7 @@
     //require_once("../controlador/c_presupuesto.php");
     
     $controlador=new C_CartaFianza();
-    $controlador->Admi();
-
+	$controlador->Admi();
     if (isset($_POST['aceptar']))
     {       
         if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK) 
@@ -33,10 +32,39 @@
 		}
 		$controlador->Agregar($dest_path);
 	}
-	if (isset($_POST['delete']))
+	else if (isset($_POST['delete']))
     {
         $controlador->Eliminar();
 	}
+	else if (isset($_POST['updateMonto']))
+    {
+        if (isset($_FILES['uploadedFile2']) && $_FILES['uploadedFile2']['error'] === UPLOAD_ERR_OK) 
+		{
+			$fileTmpPath = $_FILES['uploadedFile2']['tmp_name'];
+			$fileName = $_FILES['uploadedFile2']['name'];
+			$fileSize = $_FILES['uploadedFile2']['size'];
+			$fileType = $_FILES['uploadedFile2']['type'];
+			$fileNameCmps = explode(".", $fileName);
+			$fileExtension = strtolower(end($fileNameCmps));
+			$newFileName = $fileName . '.' . $fileExtension;
+			$allowedfileExtensions = array('jpg', 'pdf', 'png');
+			if (in_array($fileExtension, $allowedfileExtensions)) {
+				$uploadFileDir = '../doc/';
+				$dest_path = $uploadFileDir . $fileName;
+				 echo $dest_path;
+				if(move_uploaded_file($fileTmpPath, $dest_path))
+				{
+				  $message ='Archivo subido correctamente';
+				}
+				else
+				{
+				  $message = 'Error al subir el archivo al directorio principal';
+				}
+			}		
+		}
+        $controlador->UpdatePrima($dest_path);
+	}
+	else 
 	if (isset($_POST['update']))
 	{
 		if (isset($_FILES['uploadedFile1']) && $_FILES['uploadedFile1']['error'] === UPLOAD_ERR_OK) 
@@ -65,6 +93,7 @@
 		}
 		$controlador->Update($dest_path);
 	}
+	
 	
 	class C_CartaFianza{
 
@@ -95,6 +124,10 @@
 			$tipofianza = $_POST['lsttipo'];
 			$totalfianza = $_POST['txtmonto'];
 			$montoprima = $_POST['txtprima'];
+			if($montoprima == NULL)
+			{
+				$montoprima=0;
+			}
 			if (isset($_REQUEST['chkprima']))
   			{
     			$tramiteEstado=0; // cancelado
@@ -109,11 +142,36 @@
 			$telefono = $_POST['txttelef'];
             unset($_POST['aceptar']);
             
-			$this->modelo->Agregar_CF($codigo, $fechaemision, $fechavenc, $idempresa, $identidad,  $idoficina, $tipofianza, $totalfianza,$vigencia,$dest_path,$email,$telefono,$montoprima,$tramiteEstado,$saldo);
+            if ($this->modelo->Validar_CF($codigo) == NULL)
+            {
+            	$this->modelo->Agregar_CF($codigo, $fechaemision, $fechavenc, $idempresa, $identidad,  $idoficina, $tipofianza, $totalfianza,$vigencia,$dest_path,$email,$telefono,$montoprima,$tramiteEstado,$saldo);
+            	echo  '<script> window.location ="../controlador/c_cf_pendiente.php" </script>';
+            }
+            else 
+            {
+            	$dest_path = NULL;
+            	echo  '
+            	<link rel="stylesheet" type="text/css" href="../assets/css/sweetalert.css">
+            	<script> swal({
+						  title: "Registro ya existe",
+						  text: "El número de Fianza que desea ingresar ya existe",
+						  type: "warning",
+						  showCancelButton: false,
+						  confirmButtonClass: "btn-danger",
+						  confirmButtonText: "OK",
+						  closeOnConfirm: false
+						},
+						function(){
+						  window.location ="../controlador/c_cf_pendiente.php";
+						});</script> 
+							';
+            }
+
+//			
 			//Response.Redirect()	;	
 			//header("Location: ../controlador/c_sede.php");
 			//Redireccionar a la misma página
-			echo  '<script> window.location ="../controlador/c_cf_pendiente.php" </script>';
+//			echo  '<script> window.location ="../controlador/c_cf_pendiente.php" </script>';
 		}
 
 		public function Update($dest_path){
@@ -131,6 +189,10 @@
 			$prioridad = $_POST['txtprioridad'];
 			$id_cartafianza = $_POST['id'];
 			$montoprima = $_POST['txtprima'];
+			if($montoprima == NULL)
+			{
+				$montoprima=0;
+			}
 			if (isset($_REQUEST['chkprima']))
   			{
     			$tramiteEstado=0; // cancelado
@@ -141,8 +203,31 @@
     			$saldo = $montoprima;
     		}
 			unset($_POST['update']);
-            $this->modelo->Update_CF($codigo, $fechaemision, $fechavenc, $idempresa, $identidad, $idoficina, $tipofianza, $totalfianza, $vigencia, $id_cartafianza, $dest_path, $prioridad, $montoprima, $tramiteEstado, $saldo);
-            echo  '<script> window.location ="../controlador/c_cf_pendiente.php"</script>';
+
+			if ($this->modelo->Validar_CF($codigo) == NULL) // SIN REPETICIONES
+            {
+            	$this->modelo->Update_CF($codigo, $fechaemision, $fechavenc, $idempresa, $identidad, $idoficina, $tipofianza, $totalfianza, $vigencia, $id_cartafianza, $dest_path, $prioridad, $montoprima, $tramiteEstado, $saldo);
+            	echo  '<script> window.location ="../controlador/c_cf_pendiente.php"</script>';
+            }
+            else 
+            {
+            	$dest_path = '';
+            	echo  '
+            	<link rel="stylesheet" type="text/css" href="../assets/css/sweetalert.css">
+            	<script> swal({
+						  title: "Registro ya existe",
+						  text: "El número de Fianza que desea ingresar ya existe",
+						  type: "warning",
+						  showCancelButton: false,
+						  confirmButtonClass: "btn-warning",
+						  confirmButtonText: "OK",
+						  closeOnConfirm: true
+						},
+						function(){
+						  
+						});</script> 
+							';
+            }
 		}
 
 
@@ -161,6 +246,23 @@
 			require_once("../vista/v_consulta_cf_pendiente_detalles.php");
 		}
 
+		public function UpdatePrima($dest_path)
+		{
+			require_once("../modelo/m_renovacion.php");
+			$id = $_POST['id'];
+			$this->modelo2=new M_Renovacion();
+			$montoprima = $_POST['txtprima'];
+			if (isset($_REQUEST['chkprima']))
+  			{
+    			$tramiteEstado=0; // cancelado
+    			$saldo = 0;
+    		}
+    		else{
+    			$tramiteEstado=1; //vigente
+    			$saldo = $montoprima;
+    		}
+            $this->modelo2->Update_Prima($id, $tramiteEstado, $saldo,$dest_path,$montoprima);
+            echo  '<script> window.location ="../controlador/c_cf_pendiente.php"</script>';
+		}
 	}  
-
 ?>

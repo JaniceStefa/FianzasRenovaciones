@@ -8,6 +8,11 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="../assets/js/sweetalert.min.js"></script>
+    <script src="../assets/js/sweetalert.js"></script>
+
+    <!-- Include this after the sweet alert js file -->
+    @include('sweet::alert')
     
 </head>
 
@@ -91,8 +96,9 @@
                                                 <?php
                                                 if (isset($_SESSION["usuario"])) {
                                                     if ($_SESSION["usuario"]["privilegio"] == 1) {?>
-                                                <button type="button" id="modif" class="btn btn-info item" data-toggle="modal" data-target="#dataUpdate" title="Modificar" data-id="<?php echo $registro['id_cartafianza']?>" data-empresa="<?php echo $registro['nombre_empresa']?>" data-oficina="<?php echo $registro['id_oficina']?>" data-codigo="<?php echo $registro['cod_carta_fianza']?>" data-tipo="<?php echo $registro['id_tipof']?>" data-entidad="<?php echo $registro['id_entidad']?>" data-total="<?php echo $registro['total_fianza']?>" data-emision="<?php echo $registro['fecha_emision']?>" data-vigencia="<?php echo $registro['vigencia']?>"  data-prioridad="<?php echo $registro['prioridad']?>"  data-vencimiento="<?php echo $registro['fecha_venc']?>" data-archivo="<?php echo $registro['archivo']?>"><i class='zmdi zmdi-edit'></i> </button>
+                                                <button type="button" id="modif" class="btn btn-info item" data-toggle="modal" data-target="#dataUpdate" title="Renovar" data-id="<?php echo $registro['id_cartafianza']?>" data-empresa="<?php echo $registro['nombre_empresa']?>" data-oficina="<?php echo $registro['id_oficina']?>" data-codigo="<?php echo $registro['cod_carta_fianza']?>" data-tipo="<?php echo $registro['id_tipof']?>" data-entidad="<?php echo $registro['id_entidad']?>" data-total="<?php echo $registro['total_fianza']?>" data-emision="<?php echo $registro['fecha_emision']?>" data-vigencia="<?php echo $registro['vigencia']?>"  data-prioridad="<?php echo $registro['prioridad']?>"  data-vencimiento="<?php echo $registro['fecha_venc']?>"><i class='zmdi zmdi-edit'></i> </button>
                                                 <button type="button" class="btn btn-success item" data-toggle="modal" data-target="#dataDelete" title="Archivar" data-id="<?php echo $registro['id_cartafianza']?>"  ><i class='zmdi zmdi-archive'></i></button>
+                                                <button type="button" class="btn btn-success item" data-toggle="modal" data-target="#dataPrimas" title="Primas" data-id="<?php echo $registro['id_renovacion']?>" data-prima="<?php echo $registro['prima']?>" ><i class='zmdi zmdi-money'></i></button>
                                                 <?php }
                                                 } else {
                                                 }
@@ -120,12 +126,13 @@
             <?php include("modals/agregar_empresacartas.php");?>
             <?php include("modals/modif_cfianza_empresa.php");?>
             <?php include("modals/archivar_cfianza.php");?>
+            <?php include("modals/modif_primas.php");?>
             </div>
         </div>
     </div>
 <?php include 'complementos/scripts.php';?>
 
-<script src="../vista/fianzas.js"></script>
+<script src="../vista/fianzas2.js"></script>
 <script>
     $(document).ready(function() {
     $('#mytable').DataTable( {
@@ -180,13 +187,29 @@
         }
     </style>
 <script>
-  <?php $cod = ($_GET['variable1']);?>
-  $(function() {
-    var codigo = "<?php echo $cod;?>";
-    $("table tr td:first-child:contains("+codigo+")")
-      .parent().find('td')
-      .css("background-color", "rgba(57, 255, 20,0.7)");
-  });
+  <?php $cod = ($_GET['variable1']);
+    if ($cod != NULL)
+    {
+    ?>
+      $(function() {
+        var codigo = "<?php echo $cod;?>";
+        $("table tr td:first-child:contains("+codigo+")")
+            .parent().find('td')
+            .css("background-color", "rgba(57, 255, 20,0.7)");
+      });
+    <?php
+    }  
+    else
+    {?>
+        $(function() {
+        var codigo = "<?php echo $cod;?>";
+        $("table ")
+            .css("background-color", "white");
+      });
+    
+    <?php 
+    }
+    ?>
 </script>
 <!--JS para Tabla-->
 <script src="../assets/js/jquery.dataTables.min.js"></script>

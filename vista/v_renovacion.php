@@ -44,31 +44,56 @@
                                             <p>
                                                 <?php
                                                 foreach ($this->modelo->Consulta_2() as $registro) {
-                                                 ?>
-                                               <div class="row">
+                                                if($registro['aviso'] == 0){
+                                                ?>
+                                                <form role="form" id="newModalForm" method="post" action="../controlador/c_renovacion.php" enctype="multipart/form-data">
+                                                    <div class="row">
+                                                        <div class="col-lg-7" align="right">
+                                                            <p>Número de Carta Fianza: </p>
+                                                            <p>Fecha de vencimiento: </p>
+                                                            <p>Monto Total: </p>
+                                                            <p>Entidad: </p>
+                                                            <p>Tipo: </p>
+                                                            <p>Empresa/Consorcio: </p>
+                                                        </div>
+                                                        <div class="col-lg-5">
+                                                            <input type="hidden" name="id" value=<?php echo $registro['id_cartafianza']?>>
+                                                            <?php
+                                                                echo " " .$registro["cod_carta_fianza"]. "</p> ";
+                                                                $variable1 = $registro["nombre_empresa"];
+                                                                echo " ".date('d/m/Y', strtotime($registro["fecha_venc"])). "</p>";
+                                                                echo " " .number_format($registro["total_fianza"], 2, ".", ","). "</p> ";
+                                                                echo " " .$registro["nombre_entidad"]. "</p> ";
+                                                                echo " " .$registro["descripcion_tipo"]. "</p> ";?>
+                                                                <a href="../controlador/c_cf_pendiente.php?variable1=<?php echo $variable1?>">
+                                                                <?php 
+                                                                echo " ".$registro["nombre_empresa"]. "</a> </p>";?>
+                                                        </div>
+                                                    </div>
+                                                    <div align="right">
+                                                        <button type="submit" class="btn btn-success item" title="Pendiente" id="estado_pendiente" name="estado_pendiente"><i class='zmdi zmdi-check' ></i> </button>
+                                                    </div>
+                                                </form>
+                                                <hr>
+                                                <?php }
+                                                else{?>
+                                                <form role="form" id="newModalForm1" method="post" action="../controlador/c_renovacion.php" enctype="multipart/form-data">
+                                                <div class="row">
                                                     <div class="col-lg-7" align="right">
-                                                        <p>Número de Carta Fianza: </p>
-                                                        <p>Fecha de vencimiento: </p>
-                                                        <p>Monto Total: </p>
-                                                        <p>Entidad: </p>
-                                                        <p>Tipo: </p>
                                                         <p>Empresa/Consorcio: </p>
                                                     </div>
                                                     <div class="col-lg-5">
-
-                                                        <?php
-                                                            echo " " .$registro["cod_carta_fianza"]. "</p> ";
-                                                            $variable1 = $registro["nombre_empresa"];
-                                                            echo " ".date('d/m/Y', strtotime($registro["fecha_venc"])). "</p>";
-                                                            echo " " .number_format($registro["total_fianza"], 2, ".", ","). "</p> ";
-                                                            echo " " .$registro["nombre_entidad"]. "</p> ";
-                                                            echo " " .$registro["descripcion_tipo"]. "</p> ";?>
-                                                            <a href="../controlador/c_cf_pendiente.php?variable1=<?php echo $variable1?>">
-                                                            <?php 
-                                                            echo " ".$registro["nombre_empresa"]. "</a> </p>";
-                                                echo"</div>";
-                                                echo"</div>";                                                                                              
-                                                echo "<hr>";
+                                                        <input type="hidden" name="id" value=<?php echo $registro['id_cartafianza']?>>
+                                                        <a href="../controlador/c_cf_pendiente.php?variable1=<?php echo $variable1?>">
+                                                        <?php echo " ".$registro["nombre_empresa"]. "</a> </p>";?>
+                                                    </div>
+                                                </div>
+                                                <div align="right">
+                                                        <button type="submit" class="btn btn-warning item" title="Atrás" id="estado_atras" name="estado_atras"><i class='zmdi zmdi-refresh-alt' ></i> </button>
+                                                </div>
+                                                </form>
+                                                <hr>
+                                                <?php }
                                                 }
                                                 ?> 
                                             </p>
@@ -81,32 +106,57 @@
                                             <p>
                                                 <?php
                                                 foreach ($this->modelo1->Consulta_3() as $registro) {
-                                                 ?>
+                                                if($registro['aviso'] == 0){
+                                                ?>
+                                                <form role="form" id="newModalForm" method="post" action="../controlador/c_renovacion.php" enctype="multipart/form-data">
+                                                    <div class="row">
+                                                        <div class="col-lg-7" align="right">
+                                                            <p>Número de Carta Fianza: </p>
+                                                            <p>Fecha de vencimiento: </p>
+                                                            <p>Monto Total: </p>
+                                                            <p>Entidad: </p>
+                                                            <p>Tipo: </p>
+                                                            <p>Empresa/Consorcio: </p>
+                                                        </div>
+                                                        <div class="col-lg-5">
+                                                            <input type="hidden" name="id" value=<?php echo $registro['id_cartafianza']?>>
+                                                            <?php
+                                                                echo " " .$registro["cod_carta_fianza"]. "</p> ";
+                                                                $variable1 = $registro["nombre_empresa"];
+                                                                echo " ".date('d/m/Y', strtotime($registro["fecha_venc"])). "</p>";
+                                                                echo " " .number_format($registro["total_fianza"], 2, ".", ","). "</p> ";
+                                                                echo " " .$registro["nombre_entidad"]. "</p> ";
+                                                                echo " " .$registro["descripcion_tipo"]. "</p> ";?>
+                                                                <a href="../controlador/c_cf_pendiente.php?variable1=<?php echo $variable1?>">
+                                                                <?php 
+                                                                echo " ".$registro["nombre_empresa"]. "</a> </p>";?>
+                                                        </div>
+                                                    </div>
+                                                    <div align="right">
+                                                        <button type="submit" class="btn btn-success item" title="Pendiente" id="estado_pendiente" name="estado_pendiente"><i class='zmdi zmdi-check' ></i> </button>
+                                                    </div>
+                                                </form>
+                                                <hr>
+                                                <?php }
+                                                else{?>
+                                                <form role="form" id="newModalForm1" method="post" action="../controlador/c_renovacion.php" enctype="multipart/form-data">
                                                 <div class="row">
                                                     <div class="col-lg-7" align="right">
-                                                        <p>Número de Carta Fianza: </p>
-                                                        <p>Fecha de vencimiento: </p>
-                                                        <p>Monto Total: </p>
-                                                        <p>Entidad: </p>
-                                                        <p>Tipo: </p>
                                                         <p>Empresa/Consorcio: </p>
                                                     </div>
                                                     <div class="col-lg-5">
-
-                                                        <?php
-                                                            echo " " .$registro["cod_carta_fianza"]. "</p> ";
-                                                            $variable1 = $registro["nombre_empresa"];
-                                                            echo " ".date('d/m/Y', strtotime($registro["fecha_venc"])). "</p>";
-                                                            echo " " .number_format($registro["total_fianza"], 2, ".", ","). "</p> ";
-                                                            echo " " .$registro["nombre_entidad"]. "</p> ";
-                                                            echo " " .$registro["descripcion_tipo"]. "</p> ";?>
-                                                            <a href="../controlador/c_cf_pendiente.php?variable1=<?php echo $variable1?>">
-                                                            <?php 
-                                                            echo " ".$registro["nombre_empresa"]. "</a> </p>";
-                                                echo"</div>";
-                                                echo"</div>";  
-                                                echo "<hr>";
-                                            	}
+                                                        <input type="hidden" name="id" value=<?php echo $registro['id_cartafianza']?>>
+                                                        <a href="../controlador/c_cf_pendiente.php?variable1=<?php echo $variable1?>">
+                                                        <?php echo " ".$registro["nombre_empresa"]. "</a> </p>";?>
+                                                    </div>
+                                                </div>
+                                                <div align="right">
+                                                        <button type="submit" class="btn btn-warning item" title="Atrás" id="estado_atras" name="estado_atras"><i class='zmdi zmdi-refresh-alt' ></i> </button>
+                                                </div>
+                                                </form>
+                                                <hr>
+                                                <?php }
+                                                }
                                                 ?> 
                                             </p>
                                         </div>

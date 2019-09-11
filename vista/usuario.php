@@ -25,7 +25,6 @@ if (isset($_SESSION["usuario"])) {
         $('#agregarForm').modal('toggle')
     });
     </script>
-
 </head>
 <body class="animsition">
     <div class="page-wrapper">
@@ -102,7 +101,26 @@ if (isset($_SESSION["usuario"])) {
                                             </div>
                                             <div class="text">
                                                 <h2>CHEQUES</h2>
-                                                <span>General</span>
+                                                <span>Cartas Fianzas</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-t-25">
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="overview-item overview-item--c4">
+                                    <a href="../controlador/c_renovacion_pagos.php"> 
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-money"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2>PRIMAS - PAGOS</h2>
+                                                <span>Consultas</span>
                                             </div>
                                         </div>
                                     </div>
@@ -114,6 +132,27 @@ if (isset($_SESSION["usuario"])) {
                             <?php include 'complementos/footer.php';?>  
                         </div>
                     </div>
+                </div>
+
+                 <div class="col-lg-4">
+                    <!-- CHART PERCENT-->
+                    <div class="chart-percent-3 m-b-40">
+                        <h3 class="title-3 m-b-25">Avance anual %</h3>
+                        <div class="chart-note m-b-5">
+                            <span class="dot dot--green"></span>
+                            <span>Pendientes</span>
+                        </div>
+                        <div class="chart-note">
+                            <span class="dot dot--blue"></span>
+                            <span>Archivadas</span>
+                        </div>
+                        <div class="chart-wrap m-t-60">
+                            <canvas id="pieChart" width="400" height="400"></canvas>
+                            <canvas id="skills" width="300" height="300"></canvas>
+
+                        </div>
+                        </div>
+                        <!-- END CHART PERCENT-->
                 </div>
             </div>
             <!-- END MAIN CONTENT-->
@@ -142,16 +181,19 @@ if (isset($_SESSION["usuario"])) {
     <script src="../vendor/circle-progress/circle-progress.min.js"></script>
     <script src="../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="../vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="../vista/chart.js"></script>
     <script src="../vendor/select2/select2.min.js">
     </script>
 
     <!-- Main JS-->
     <script src="../assets/js/main.js"></script>
+<script type="text/javascript">
 
+</script>
+
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-
 
 </body>
 </html>

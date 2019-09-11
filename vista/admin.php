@@ -109,6 +109,25 @@ if (isset($_SESSION["usuario"])) {
                                 </div>
                             </div>
                         </div>
+                        <div class="row m-t-25">
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="overview-item overview-item--c4">
+                                    <a href="../controlador/c_renovacion_pagos.php"> 
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-money"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2>PRIMAS - PAGOS</h2>
+                                                <span>Consultas</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <?php include 'complementos/footer.php';?>  
                         </div>

@@ -53,7 +53,7 @@
                                 </div>
                                 <!-- DATA TABLE -->
                                 <div class="table-responsive table--no-card m-b-30">
-                                    <table id="mytable" class="table table-data2 table-striped" onmouseover="this.style.cursor='pointer';" onclick="fila();">
+                                    <table id="mytable" class="table table-data3 table-striped" onmouseover="this.style.cursor='pointer';" onclick="fila();">
                                         <thead class="table-earning">
                                             <tr>
                                                 <th>Poliza</th>
@@ -73,13 +73,13 @@
                                                 echo "<tr class='tr-shadow' id='reg' ><td>".$registro["cod_cartafianza"]. "</td>";
                                                 echo "<td>".$registro["nombre_empresa"]. "</td>";
                                                 if ($registro["tramite_estado"] == 1)
-                                                    echo "<td align='center' id='estado'>VIG</td>";
+                                                    echo "<td align='center' class='process' id='estado'>VIG</td>";
                                                 else
-                                                    echo "<td align='center'>CANC</td>";
+                                                    echo "<td align='center' class='denied'>CANC</td>";
 
                                                 echo "<td align='center'> S/.".number_format($registro["total_fianza"], 2, ".", ","). "</td>";
-                                                echo "<td>".date('d/m/Y', strtotime($registro["fecha_emision"]))."</td>";
-                                                echo "<td>".date('d/m/Y', strtotime($registro["fecha_venc"])). "</td>";
+                                                echo "<td align='center'>".date('d/m/Y', strtotime($registro["fecha_emision"]))."</td>";
+                                                echo "<td align='center'>".date('d/m/Y', strtotime($registro["fecha_venc"])). "</td>";
                                                 echo "<td align='center'> S/.".number_format($registro["saldo"], 2, ".", ","). "</td>";
                                                 echo "<td align='center'> S/.".number_format($registro["prima"], 2, ".", ","). "</td>";
                                                 echo "<td>";?>

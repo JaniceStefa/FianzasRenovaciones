@@ -74,6 +74,12 @@
 
 			echo  '<script> window.location ="../controlador/c_cf_pendiente.php" </script>';
 		}
+		public function Consultas(){
+			require_once("../modelo/m_cartafianza.php");
+			$this->modelo=new M_CartaFianza();
+			$pieData = $_POST['id'];
+			$this->modelo->Eliminar_CF($id);
+		}
 
 	}  
 
